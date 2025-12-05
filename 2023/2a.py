@@ -6,33 +6,27 @@ while n != 0:
     tests.append(s)
     n -= 1
 
-RED, BLUE, GREEN = 12, 14, 13
-
 sum = 0
 for index, test in enumerate(tests):
-    flag = 0
+    r, g, b = 0, 0, 0
 
     sets = [x.strip() for x in test.split(":")][1]
     draws = [x.strip() for x in sets.split(";")]
     for draw in draws:
-        if flag == 1:
-            break
         cubes = [cube.strip() for cube in draw.split(",")]
         for cube in cubes:
-            if flag == 1:
-                break
             [count, color] = [x.strip() for x in cube.split(" ")]
 
             actual_count = int(count)
 
-            if color == "blue" and actual_count > BLUE:
-                flag = 1
-            if color == "red" and actual_count > RED:
-                flag = 1
-            if color == "green" and actual_count > GREEN:
-                flag = 1
+            if color == "blue":
+                b = max(b, actual_count)
+            if color == "red":
+                r = max(r, actual_count)
+            if color == "green":
+                g = max(g, actual_count)
 
-    if flag == 0:
-        sum += index + 1
+    print(r, g, b)
+    sum += r * g * b
 
 print(sum)
