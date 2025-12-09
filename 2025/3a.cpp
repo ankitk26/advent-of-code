@@ -5,32 +5,32 @@ using ull = unsigned long long int;
 
 
 int main() {
-  int n = 200;
+	int n = 200;
 
-  int sum = 0;
+	int sum = 0;
 
-  while (n--) {
-    string s; cin >> s;
+	while (n--) {
+		string s; cin >> s;
 
-    char f = '0';
-    int fi = 0;
-    for (int i = 0; i < s.size() - 1; i++) {
-      if (s[i] > f) {
-        f = s[i];
-        fi = i;
-      }
-    }
+		char f = '0';
+		int fi = 0;
+		for (int i = 0; i < s.size() - 1; i++) {
+			if (s[i] > f) {
+				f = s[i];
+				fi = i;
+			}
+		}
 
-    char sf = '0';
-    for (int i = fi + 1; i < s.size(); i++) {
-      sf = max(sf, s[i]);
-    }
+		char sf = '0';
+		for (int i = fi + 1; i < s.size(); i++) {
+			sf = max(sf, s[i]);
+		}
 
-    int num = (int)(f - '0') * 10 + (int)(sf - '0');
-    sum += num;
-  }
+		int num = (int)(f - '0') * 10 + (int)(sf - '0');
+		sum += num;
+	}
 
-  cout << sum;
+	cout << sum;
 
-  return 0;
+	return 0;
 }
